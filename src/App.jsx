@@ -4,6 +4,13 @@ const App = () => {
   const [num, setNum] = useState(12);
   const [type, setType] = useState("Linear");
 
+  const getHexColor() => {
+  const rgb = 255*255*255;
+  const random = Math.random() * rgb;
+  console.log(random)
+    }
+ 
+
   return (
     <div className="min-h-screen py-12">
       <div className="w-9/12 mx-auto">
@@ -26,6 +33,7 @@ const App = () => {
             >
               <option value="Linear">Linear</option>
               <option value="Radial">Radial</option>
+              <button onClick={}></button>
             </select>
           </div>
         </div>
