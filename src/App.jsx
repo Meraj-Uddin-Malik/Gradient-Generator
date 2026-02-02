@@ -42,7 +42,7 @@ const App = () => {
         <div className="grid grid-cols-4 gap-4">
         <div className="h-[180px] bg-red-500 rounded-lg" 
         style={{background: getHexColor()}}>
-
+<button className="bg-black/75 text-white">Copy</button>
         </div>
 
         </div>
