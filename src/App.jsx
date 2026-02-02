@@ -8,14 +8,14 @@ const App = () => {
     const rgb = 255 * 255 * 255;
     const random = Math.random() * rgb;
     const int = Math.floor(random);
-    const hexCode = int.toString(16).padStart(6, "0");
-    hexCode.padStart(7, "#");
-    console.log(hexCode);
+    const hexCode = int.toString(16).padEnd(6, "0");
+    const colorHex = "#" + hexCode;
+    return colorHex;
   };
 
   return (
     <div className="min-h-screen py-12">
-      <div className="w-9/12 mx-auto">
+      <div className="w-9/12 mx-auto space-y-12">
         <div className="flex justify-between">
           <h1 className="text-3xl font-bold">
             🟧 Gradient Generator - ({num}) ({type})
@@ -37,10 +37,16 @@ const App = () => {
               <option value="Radial">Radial</option>
             </select>
           </div>
-          <button onClick={getHexColor}>Text</button>
+        </div>
+
+        <div className="grid grid-cols-4 gap-4">
+        <div className="h-[180px] bg-red-500 rounded-lg" 
+        style={{background: getHexColor()}}>
+
+        </div>
+
         </div>
       </div>
-      ``
     </div>
   );
 };
