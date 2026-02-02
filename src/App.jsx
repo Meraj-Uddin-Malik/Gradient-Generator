@@ -40,12 +40,47 @@ const App = () => {
         </div>
 
         <div className="grid grid-cols-4 gap-4">
-        <div className="h-[180px] bg-red-500 rounded-lg" 
-        style={{background: getHexColor()}}>
-<button className="bg-black/75 text-white">Copy</button>
+          <div
+            className="h-45 bg-red-500 rounded-lg relative"
+            style={{ background: getHexColor() }}
+          >
+            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
+              Copy
+            </button>
+          </div>
+
+          <div
+            className="h-45 bg-red-500 rounded-lg relative"
+            style={{ background: getHexColor() }}
+          >
+            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
+              Copy
+            </button>
+          </div>
+
+
+          <div
+            className="h-45 bg-red-500 rounded-lg relative"
+            style={{ background: getHexColor() }}
+          >
+            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
+              Copy
+            </button>
+          </div>
+
+
+          <div
+            className="h-45 bg-red-500 rounded-lg relative"
+            style={{ background: getHexColor() }}
+          >
+            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
+              Copy
+            </button>
+          </div>
         </div>
 
-        </div>
+
+        
       </div>
     </div>
   );
