@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 const App = () => {
   const [num, setNum] = useState(12);
@@ -22,17 +23,32 @@ const App = () => {
       const color2 = getHexColor();
       const degree = Math.floor(Math.random() * 360);
       const degreeString = `${degree}deg`;
-      colors.push({
-        gradient: `linear-gradient(${degreeString}, ${color1}, ${color2})`,
-        css: `background: linear-gradient(${degreeString}, ${color1}, ${color2});`,
-      });
+
+
+      if (type === "Linear") {
+        colors.push({
+          gradient: `linear-gradient(${degreeString}, ${color1}, ${color2})`,
+          css: `background: linear-gradient(${degreeString}, ${color1}, ${color2});`,
+        });
+      } else {
+        colors.push({
+          gradient: `radial-gradient(circle, ${color1}, ${color2})`,
+          css: `background: radial-gradient(circle, ${color1}, ${color2});`,
+        });
+      }
     }
+
     setGradients(colors);
+  };
+
+  const onCopy = (css) => {
+    navigator.clipboard.writeText(css);
+    toast.success("CSS Copied to Clipboard!", { position: "bottom-right" });
   };
 
   useEffect(() => {
     generateGradients();
-  }, [num]);
+  }, [num, type]);
 
   return (
     <div className="min-h-screen py-12">
@@ -65,13 +81,17 @@ const App = () => {
               className="h-40 bg-red-500 rounded-lg relative"
               style={{ background: item.gradient }}
             >
-              <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
+              <button
+                className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]"
+                onClick={() => onCopy(item.css)}
+              >
                 Copy
               </button>
             </div>
           ))}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
