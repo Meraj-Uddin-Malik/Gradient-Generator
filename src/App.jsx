@@ -24,7 +24,6 @@ const App = () => {
       const degree = Math.floor(Math.random() * 360);
       const degreeString = `${degree}deg`;
 
-
       if (type === "Linear") {
         colors.push({
           gradient: `linear-gradient(${degreeString}, ${color1}, ${color2})`,
@@ -71,6 +70,12 @@ const App = () => {
               <option value="Linear">Linear</option>
               <option value="Radial">Radial</option>
             </select>
+            <button
+              className="px-16 py-2 bg-rose-500 text-white rounded-lg font-medium"
+              onClick={generateGradients}
+            >
+              Generate
+            </button>
           </div>
         </div>
 
