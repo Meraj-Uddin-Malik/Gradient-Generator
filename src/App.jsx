@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
   const [num, setNum] = useState(12);
   const [type, setType] = useState("Linear");
+  const [gradients, setGradients] = useState([]);
 
   const getHexColor = () => {
     const rgb = 255 * 255 * 255;
@@ -13,13 +14,23 @@ const App = () => {
     return colorHex;
   };
 
+  useEffect(() => {
+    const generateGradients = () => {
+      const tempGradients = [];
+      for (let i = 0; i < num; i++) {
+        tempGradients.push(getHexColor());
+      }
+      setGradients(tempGradients);
+    };
+
+    generateGradients();
+  }, [num]);
+
   return (
     <div className="min-h-screen py-12">
       <div className="w-9/12 mx-auto space-y-12">
         <div className="flex justify-between">
-          <h1 className="text-3xl font-bold">
-            🟧 Gradient Generator - ({num}) ({type})
-          </h1>
+          <h1 className="text-3xl font-bold">🟧 Gradient Generator</h1>
           <div className="flex gap-4">
             <input
               value={num}
@@ -40,47 +51,17 @@ const App = () => {
         </div>
 
         <div className="grid grid-cols-4 gap-4">
-          <div
-            className="h-45 bg-red-500 rounded-lg relative"
-            style={{ background: getHexColor() }}
-          >
-            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
-              Copy
-            </button>
-          </div>
-
-          <div
-            className="h-45 bg-red-500 rounded-lg relative"
-            style={{ background: getHexColor() }}
-          >
-            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
-              Copy
-            </button>
-          </div>
-
-
-          <div
-            className="h-45 bg-red-500 rounded-lg relative"
-            style={{ background: getHexColor() }}
-          >
-            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
-              Copy
-            </button>
-          </div>
-
-
-          <div
-            className="h-45 bg-red-500 rounded-lg relative"
-            style={{ background: getHexColor() }}
-          >
-            <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
-              Copy
-            </button>
-          </div>
+          {gradients.map((gradient, index) => (
+            <div key={index}
+              className="h-45 bg-red-500 rounded-lg relative"
+              style={{ background: getHexColor() }}
+            >
+              <button className="bg-black/50 hover:bg-black text-white rounded absolute bottom-3 right-3 py-1 px-2 text-[10px]">
+                Copy
+              </button>
+            </div>
+          ))}
         </div>
-
-
-        
       </div>
     </div>
   );
