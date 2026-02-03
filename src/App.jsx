@@ -51,10 +51,10 @@ const App = () => {
 
   return (
     <div className="min-h-screen py-12">
-      <div className="w-9/12 mx-auto space-y-12">
-        <div className="flex justify-between">
+      <div className="max-w-7xl mx-auto px-4 space-y-12">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h1 className="text-3xl font-bold">🟧 Gradient Generator</h1>
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row">
             <input
               value={num}
               className="border border-slate-300 bg-white rounded-lg w-25 p-2 placeholder-gray-400"
@@ -64,14 +64,14 @@ const App = () => {
 
             <select
               value={type}
-              className="border border-slate-300 bg-white rounded-lg w-25 p-2"
+              className="border border-slate-300 rounded-lg p-2 w-full sm:w-24"
               onChange={(e) => setType(e.target.value)}
             >
               <option value="Linear">Linear</option>
               <option value="Radial">Radial</option>
             </select>
             <button
-              className="px-16 py-2 bg-rose-500 text-white rounded-lg font-medium"
+              className="w-full sm:w-auto px-8 py-2 bg-rose-500 text-white rounded-lg font-medium"
               onClick={generateGradients}
             >
               Generate
@@ -79,11 +79,11 @@ const App = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {gradients.map((item, index) => (
             <div
               key={index}
-              className="h-40 bg-red-500 rounded-lg relative"
+              className="h-40 rounded-lg relative"
               style={{ background: item.gradient }}
             >
               <button
